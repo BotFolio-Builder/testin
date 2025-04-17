@@ -1,0 +1,1280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tanmay Pawar</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+    <style>
+        /* Variables */
+        :root {
+            --gradient-start: #8A2387;
+            --gradient-middle: #E94057;
+            --gradient-end: #F27121;
+            --text-primary: #333;
+            --text-secondary: #666;
+            --text-light: #fff;
+            --bg-light: #fff;
+            --bg-dark: #111;
+            --bg-section: rgba(255, 255, 255, 0.95);
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            --radius: 12px;
+            --transition: all 0.3s ease;
+        }
+
+        /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background-color: var(--bg-light);
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--gradient-middle);
+            transition: var(--transition);
+        }
+
+        a:hover {
+            color: var(--gradient-start);
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 600;
+            line-height: 1.3;
+            margin-bottom: 1rem;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -8px;
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(to right, var(--gradient-start), var(--gradient-middle));
+        }
+
+        p {
+            margin-bottom: 1.5rem;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        section {
+            padding: 5rem 0;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            background: linear-gradient(to right, var(--gradient-start), var(--gradient-middle));
+            color: white;
+            border: none;
+            border-radius: 30px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+            text-align: center;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(233, 64, 87, 0.3);
+            color: white;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-title h2 {
+            margin-bottom: 1rem;
+        }
+
+        .section-title h2::after {
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+        }
+
+        /* Header & Navigation */
+        header {
+            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-middle), var(--gradient-end));
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: white;
+        }
+
+        .nav-list {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-item {
+            margin-left: 2rem;
+        }
+
+        .nav-link {
+            color: white;
+            font-weight: 500;
+            position: relative;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: white;
+            transition: var(--transition);
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-middle), var(--gradient-end));
+            padding-top: 80px;
+        }
+
+        .hero-content {
+            color: white;
+            max-width: 700px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-title {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .hero-cta .btn {
+            background: white;
+            color: var(--gradient-middle);
+        }
+
+        .hero-cta .btn:hover {
+            background: rgba(255, 255, 255, 0.9);
+        }
+
+        .hero-cta .btn-outline {
+            background: transparent;
+            border: 2px solid white;
+        }
+
+        .hero-cta .btn-outline:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        /* About Section */
+        .about {
+            background-color: var(--bg-light);
+            position: relative;
+        }
+
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 4rem;
+        }
+
+        .about-text {
+            flex: 1;
+            position: relative;
+        }
+
+        .about-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .tag {
+            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-middle));
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        /* Education Section */
+        .education {
+            background-color: #f9f9f9;
+            position: relative;
+        }
+
+        .education-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .education-item {
+            background-color: white;
+            border-radius: var(--radius);
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .education-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .education-degree {
+            font-size: 1.4rem;
+            color: var(--gradient-middle);
+            margin-bottom: 0.5rem;
+        }
+
+        .education-university {
+            font-size: 1.1rem;
+            color: var(--text-primary);
+            font-weight: 500;
+        }
+
+        .education-period {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+        }
+
+        .education-courses {
+            margin-top: 1rem;
+        }
+
+        .education-courses h4 {
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .courses-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .course-item {
+            background-color: #f1f1f1;
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+        }
+
+        /* Experience Timeline */
+        .experience {
+            background-color: var(--bg-light);
+            position: relative;
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 4px;
+            background: linear-gradient(to bottom, var(--gradient-start), var(--gradient-middle), var(--gradient-end));
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -2px;
+        }
+
+        .timeline-item {
+            padding: 1rem 2rem;
+            position: relative;
+            width: 50%;
+            box-sizing: border-box;
+            margin-bottom: 2rem;
+        }
+
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 24px;
+            height: 24px;
+            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-middle));
+            border-radius: 50%;
+            top: 1.5rem;
+            z-index: 1;
+        }
+
+        .timeline-item.left {
+            left: 0;
+        }
+
+        .timeline-item.right {
+            left: 50%;
+        }
+
+        .timeline-item.left::after {
+            right: -12px;
+        }
+
+        .timeline-item.right::after {
+            left: -12px;
+        }
+
+        .timeline-content {
+            background-color: white;
+            border-radius: var(--radius);
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .timeline-content:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .job-title {
+            font-size: 1.4rem;
+            color: var(--gradient-middle);
+            margin-bottom: 0.5rem;
+        }
+
+        .job-company {
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+
+        .job-period {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+        }
+
+        .job-location {
+            font-style: italic;
+            margin-left: 0.5rem;
+        }
+
+        .job-description ul {
+            padding-left: 1.5rem;
+        }
+
+        .job-description li {
+            margin-bottom: 0.5rem;
+            position: relative;
+        }
+
+        .job-description li::before {
+            content: '•';
+            color: var(--gradient-middle);
+            position: absolute;
+            left: -1rem;
+            font-weight: bold;
+        }
+
+        /* Projects Section */
+        .projects {
+            background-color: #f9f9f9;
+            position: relative;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background-color: white;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .project-img {
+            height: 200px;
+            width: 100%;
+            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-middle));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
+        }
+
+        .project-content {
+            padding: 1.5rem;
+        }
+
+        .project-title {
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-description {
+            margin-bottom: 1.5rem;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .project-tag {
+            font-size: 0.8rem;
+            padding: 0.3rem 0.8rem;
+            background-color: #f1f1f1;
+            border-radius: 20px;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .project-link {
+            font-size: 1.2rem;
+            color: var(--gradient-middle);
+        }
+
+        .project-link:hover {
+            color: var(--gradient-start);
+        }
+
+        /* Accomplishments Section */
+        .accomplishments {
+            background-color: var(--bg-light);
+            position: relative;
+        }
+
+        .accomplishments-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .accomplishment-card {
+            background-color: white;
+            border-radius: var(--radius);
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border-top: 4px solid var(--gradient-middle);
+        }
+
+        .accomplishment-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .accomplishment-title {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .accomplishment-date {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+        }
+
+        /* Contact Section */
+        .contact {
+            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-middle), var(--gradient-end));
+            color: white;
+            text-align: center;
+        }
+
+        .contact-info {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .contact h2 {
+            color: white;
+        }
+
+        .contact h2::after {
+            background: white;
+        }
+
+        .contact-text {
+            margin-bottom: 2rem;
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .contact-link {
+            display: flex;
+            align-items: center;
+            color: white;
+            font-weight: 500;
+        }
+
+        .contact-link i {
+            margin-right: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .social-link {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            transition: var(--transition);
+        }
+
+        .social-link:hover {
+            background-color: white;
+            color: var(--gradient-middle);
+            transform: translateY(-5px);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--bg-dark);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.6s ease forwards;
+        }
+
+        /* Utilities */
+        .mt-1 { margin-top: 0.5rem; }
+        .mt-2 { margin-top: 1rem; }
+        .mt-3 { margin-top: 1.5rem; }
+        .mt-4 { margin-top: 2rem; }
+        .mt-5 { margin-top: 3rem; }
+
+        /* Responsive Design */
+        @media screen and (max-width: 992px) {
+            .about-content {
+                flex-direction: column;
+                gap: 2rem;
+            }
+            
+            .timeline::after {
+                left: 31px;
+            }
+            
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 0px;
+            }
+            
+            .timeline-item.left::after,
+            .timeline-item.right::after {
+                left: 19px;
+            }
+            
+            .timeline-item.right {
+                left: 0%;
+            }
+        }
+
+        @media screen and (max-width: 768px) {
+            .hero-title {
+                font-size: 3rem;
+            }
+            
+            .header-container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .nav-list {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .nav-item {
+                margin: 0 1rem;
+            }
+            
+            section {
+                padding: 3rem 0;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .btn {
+                padding: 0.7rem 1.5rem;
+                font-size: 0.9rem;
+            }
+            
+            .hero-cta {
+                flex-direction: column;
+            }
+            
+            .timeline-content,
+            .education-item,
+            .project-card,
+            .accomplishment-card {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header>
+        <div class="container header-container">
+            <a href="#" class="logo">
+                
+                    
+                    
+                        TP
+                    
+                
+            </a>
+            <nav>
+                <ul class="nav-list">
+                    <li class="nav-item"><a href="#about" class="nav-link">About</a></li>
+                    <li class="nav-item"><a href="#education" class="nav-link">Education</a></li>
+                    <li class="nav-item"><a href="#experience" class="nav-link">Experience</a></li>
+                    <li class="nav-item"><a href="#projects" class="nav-link">Projects</a></li>
+                    <li class="nav-item"><a href="#accomplishments" class="nav-link">Accomplishments</a></li>
+                    <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">I'm Tanmay Pawar</h1>
+                <p class="hero-subtitle">
+                    
+                        Passionate developer creating innovative solutions
+                    
+                </p>
+                <div class="hero-cta">
+                    <a href="#contact" class="btn">Get In Touch</a>
+                    <a href="#projects" class="btn btn-outline">View My Work</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>About Me</h2>
+                <p>Let me introduce myself</p>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>
+                        
+                            Professional developer with a passion for creating innovative solutions to complex problems.
+                        
+                    </p>
+                    
+                    <div class="about-tags">
+                        
+                            
+                                
+                                    
+                                        <span class="tag">Python</span>
+                                    
+                                        <span class="tag">C#</span>
+                                    
+                                        <span class="tag">Java</span>
+                                    
+                                        <span class="tag">HTML</span>
+                                    
+                                        <span class="tag">CSS</span>
+                                    
+                                        <span class="tag">JavaScript</span>
+                                    
+                                
+                            
+                                
+                            
+                                
+                            
+                                
+                            
+                                
+                            
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education" class="education">
+        <div class="container">
+            <div class="section-title">
+                <h2>Education</h2>
+                <p>My academic background</p>
+            </div>
+            <div class="education-container">
+                
+                    
+                        <div class="education-item fade-in">
+                            <h3 class="education-degree">Master of Science in Information Systems</h3>
+                            <p class="education-university">Northeastern University, Boston, MA</p>
+                            <p class="education-period">Expected May 2026</p>
+                            
+                            
+                                <div class="education-courses">
+                                    <h4>Related Coursework:</h4>
+                                    <div class="courses-list">
+                                        
+                                            <span class="course-item">Data Science</span>
+                                        
+                                            <span class="course-item">Big Data Intelligence</span>
+                                        
+                                            <span class="course-item">Database Management</span>
+                                        
+                                    </div>
+                                </div>
+                            
+                            
+                            
+                                <p class="mt-2"><strong>GPA:</strong> 4</p>
+                            
+                        </div>
+                    
+                        <div class="education-item fade-in">
+                            <h3 class="education-degree">Bachelor of Engineering in Computer Engineering</h3>
+                            <p class="education-university">Pune University, Pune, India</p>
+                            <p class="education-period">Mar 2018 - Jun 2022</p>
+                            
+                            
+                                <div class="education-courses">
+                                    <h4>Related Coursework:</h4>
+                                    <div class="courses-list">
+                                        
+                                            <span class="course-item">Computer Organization and Architecture</span>
+                                        
+                                            <span class="course-item">Machine Learning</span>
+                                        
+                                            <span class="course-item">DBMS</span>
+                                        
+                                            <span class="course-item">Cloud</span>
+                                        
+                                    </div>
+                                </div>
+                            
+                            
+                            
+                        </div>
+                    
+                        <div class="education-item fade-in">
+                            <h3 class="education-degree">CS</h3>
+                            <p class="education-university">MIT</p>
+                            <p class="education-period"></p>
+                            
+                            
+                            
+                            
+                        </div>
+                    
+                
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Timeline Section -->
+    <section id="experience" class="experience">
+        <div class="container">
+            <div class="section-title">
+                <h2>Experience</h2>
+                <p>My professional journey</p>
+            </div>
+            <div class="timeline">
+                
+                    
+                        <div class="timeline-item left fade-in">
+                            <div class="timeline-content">
+                                <h3 class="job-title">Software Engineer</h3>
+                                <p class="job-company">Persistent Systems Ltd</p>
+                                <p class="job-period">
+                                    Jul 2022 - Jul 2024
+                                    
+                                        <span class="job-location">Pune, India</span>
+                                    
+                                </p>
+                                
+                                
+                                    <div class="job-description">
+                                        <ul>
+                                            
+                                                <li>Designed and implemented scalable data pipelines leveraging Apache Spark and Python to process large datasets from
+AWS S3 using MapReduce-style techniques, reducing data retrieval time by 30%</li>
+                                            
+                                                <li>Automated ETL processes using Apache Airflow and dbt to streamline data ingestion and transformation, cutting
+manual data handling tasks by 40%</li>
+                                            
+                                                <li>Developed and integrated RESTful APIs using .NET to connect external data sources with modern platforms,
+improving system integration efficiency by 25%</li>
+                                            
+                                                <li>Built interactive dashboards with Tableau and Python that provided real-time analytics and empowered business teams
+to make informed decisions</li>
+                                            
+                                                <li>Deployed containerized data solutions with Kubernetes to ensure high availability and scalability of automated data
+workflows</li>
+                                            
+                                        </ul>
+                                    </div>
+                                
+                            </div>
+                        </div>
+                    
+                        <div class="timeline-item right fade-in">
+                            <div class="timeline-content">
+                                <h3 class="job-title">Intern</h3>
+                                <p class="job-company">Persistent Systems Ltd</p>
+                                <p class="job-period">
+                                    Feb 2022 - Jul 2022
+                                    
+                                        <span class="job-location">Pune, India</span>
+                                    
+                                </p>
+                                
+                                
+                                    <div class="job-description">
+                                        <ul>
+                                            
+                                                <li>Assisted in creating and managing over 10 dynamic, scalable React components, contributing to a smoother user
+experience across multiple platforms and helping reduce load times by 20%</li>
+                                            
+                                                <li>Supported the design and development of RESTful APIs using .NET Core, which improved data retrieval efficiency
+by approximately 15%</li>
+                                            
+                                                <li>Collaborated closely with cross-functional teams to ensure seamless integration between front-end and back-end
+systems</li>
+                                            
+                                                <li>Wrote SQL queries to extract data from various source tables and files, facilitating back-end testing and improving data
+accuracy by 10%</li>
+                                            
+                                        </ul>
+                                    </div>
+                                
+                            </div>
+                        </div>
+                    
+                        <div class="timeline-item left fade-in">
+                            <div class="timeline-content">
+                                <h3 class="job-title">Intern</h3>
+                                <p class="job-company">Apple</p>
+                                <p class="job-period">
+                                    Aug 2025 - Jan 2026
+                                    
+                                </p>
+                                
+                                
+                            </div>
+                        </div>
+                    
+                
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <div class="section-title">
+                <h2>Projects</h2>
+                <p>My recent work</p>
+            </div>
+            <div class="projects-grid">
+                
+                    
+                        <div class="project-card fade-in">
+                            <div class="project-img">
+                                <i class="fas fa-code"></i>
+                            </div>
+                            <div class="project-content">
+                                <h3 class="project-title">MediSense</h3>
+                                <p class="project-description">Developed MediSense, a medical data pipeline using BeautifulSoup, AWS S3, and LangChain for efficient web data
+extraction and AI-powered retrieval (RAG, Gemini API). Built an interactive Streamlit UI and deployed on GCP for
+scalability</p>
+                                
+                                
+                                    <div class="project-tags">
+                                        
+                                            <span class="project-tag">AWS S3</span>
+                                        
+                                            <span class="project-tag">LangChain</span>
+                                        
+                                            <span class="project-tag">RAG</span>
+                                        
+                                            <span class="project-tag">Streamlit</span>
+                                        
+                                            <span class="project-tag">GCP</span>
+                                        
+                                    </div>
+                                
+                                
+                                <div class="project-links">
+                                    
+                                        <a href="https://github.com/Tanmay6461/Data-Extraction-and-Retrieval.git" class="project-link" target="_blank" rel="noopener noreferrer">
+                                            <i class="fab fa-github"></i>
+                                        </a>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    
+                        <div class="project-card fade-in">
+                            <div class="project-img">
+                                <i class="fas fa-code"></i>
+                            </div>
+                            <div class="project-content">
+                                <h3 class="project-title">Findata</h3>
+                                <p class="project-description">Built an end-to-end financial data pipeline for SEC Financial Statement Data Sets using Snowflake, Airflow, and AWS
+S3. Designed efficient storage (Raw Staging, JSON, Denormalized Fact Tables) with dbt transformations and deployed
+a full-stack Streamlit-FastAPI application on GCP using Docker</p>
+                                
+                                
+                                    <div class="project-tags">
+                                        
+                                            <span class="project-tag">Python</span>
+                                        
+                                            <span class="project-tag">Snowflake</span>
+                                        
+                                            <span class="project-tag">Apache Airflow</span>
+                                        
+                                            <span class="project-tag">AWS</span>
+                                        
+                                            <span class="project-tag">dbt</span>
+                                        
+                                            <span class="project-tag">Streamlit</span>
+                                        
+                                            <span class="project-tag">FastAPI</span>
+                                        
+                                            <span class="project-tag">Docker</span>
+                                        
+                                            <span class="project-tag">GCP</span>
+                                        
+                                    </div>
+                                
+                                
+                                <div class="project-links">
+                                    
+                                        <a href="https://github.com/bigdata-org/financial_data_extraction.git" class="project-link" target="_blank" rel="noopener noreferrer">
+                                            <i class="fab fa-github"></i>
+                                        </a>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    
+                        <div class="project-card fade-in">
+                            <div class="project-img">
+                                <i class="fas fa-code"></i>
+                            </div>
+                            <div class="project-content">
+                                <h3 class="project-title">Pytract</h3>
+                                <p class="project-description">Built a prototype for document extraction, standardization, and storage using Python and AWS S3. Exposed data via
+FastAPI and a Streamlit UI to evaluate scalable processing workflows</p>
+                                
+                                
+                                    <div class="project-tags">
+                                        
+                                            <span class="project-tag">PyPDF2</span>
+                                        
+                                            <span class="project-tag">pdfplumber</span>
+                                        
+                                            <span class="project-tag">BeautifulSoup</span>
+                                        
+                                            <span class="project-tag">Docling</span>
+                                        
+                                            <span class="project-tag">AWS S3</span>
+                                        
+                                            <span class="project-tag">FastAPI</span>
+                                        
+                                            <span class="project-tag">Streamlit</span>
+                                        
+                                    </div>
+                                
+                                
+                                <div class="project-links">
+                                    
+                                        <a href="https://github.com/Tanmay6461/PyTract.git" class="project-link" target="_blank" rel="noopener noreferrer">
+                                            <i class="fab fa-github"></i>
+                                        </a>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    
+                        <div class="project-card fade-in">
+                            <div class="project-img">
+                                <i class="fas fa-code"></i>
+                            </div>
+                            <div class="project-content">
+                                <h3 class="project-title">Neural Networks Project</h3>
+                                <p class="project-description"></p>
+                                
+                                
+                                
+                                <div class="project-links">
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    
+                
+            </div>
+        </div>
+    </section>
+
+    <!-- Accomplishments Section -->
+    <section id="accomplishments" class="accomplishments">
+        <div class="container">
+            <div class="section-title">
+                <h2>Accomplishments</h2>
+                <p>Recognition and certifications</p>
+            </div>
+            <div class="accomplishments-grid">
+                
+                    <p>No accomplishments information available</p>
+                
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Contact Me</h2>
+                <p>Let's get in touch</p>
+            </div>
+            <div class="contact-info">
+                <p class="contact-text">Feel free to reach out if you're looking for a developer, have a question, or just want to connect.</p>
+                
+                <div class="contact-links">
+                    
+                        <a href="mailto:tanmaypawar6461@gmail.com" class="contact-link">
+                            <i class="fas fa-envelope"></i> tanmaypawar6461@gmail.com
+                        </a>
+                    
+                    
+                    
+                        <a href="tel:(857) 339-8799" class="contact-link">
+                            <i class="fas fa-phone"></i> (857) 339-8799
+                        </a>
+                    
+                    
+                    
+                        <span class="contact-link">
+                            <i class="fas fa-map-marker-alt"></i> Boston, MA, 02120
+                        </span>
+                    
+                </div>
+                
+                <div class="social-links">
+                    
+                        <a href="https://www.linkedin.com/in/tanmay-pawar-73a9201ba/" class="social-link" target="_blank" rel="noopener noreferrer">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                    
+                    
+                    
+                        <a href="https://github.com/orgs/bigdata-org/repositories" class="social-link" target="_blank" rel="noopener noreferrer">
+                            <i class="fab fa-github"></i>
+                        </a>
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; <span id="current-year">2025</span> Tanmay Pawar. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Set current year
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+        
+        // Smooth scrolling for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+        // Add fade-in animation on scroll
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+        
+        const fadeElements = document.querySelectorAll('.fade-in');
+        
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = 1;
+                    entry.target.style.transform = 'translateY(0)';
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+        
+        fadeElements.forEach(element => {
+            element.style.opacity = 0;
+            element.style.transform = 'translateY(20px)';
+            element.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(element);
+        });
+        
+        // Highlight active section in navigation
+        const sections = document.querySelectorAll('section[id]');
+        
+        window.addEventListener('scroll', () => {
+            let current = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                
+                if (pageYOffset >= sectionTop - 200) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').substring(1) === current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
